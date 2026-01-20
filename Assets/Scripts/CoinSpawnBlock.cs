@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class CoinSpawnBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _coinPrefab;
+
+    [SerializeField] private float _spawnInterval = 1.5f;
+
+    private float _timer;
 
     // Update is called once per frame
     void Update()
     {
-        
+        _timer += Time.deltaTime;
+
+        if (_timer >= +_spawnInterval)
+        {
+            SpawnCoin();
+            _timer = 0f;
+        }
+    }
+    public void SpawnCoin()
+    {
+        GameObject newCoin = Instantiate(_coinPrefab);
+        newCoin.transform.position = transform.position;
+
+        Debug.Log("Spawned coin!");
     }
 }

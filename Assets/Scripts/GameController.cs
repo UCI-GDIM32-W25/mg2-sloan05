@@ -1,20 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameController : MonoBehaviour
+
 {
-    [SerializeField] private TMP_Text _pointsText;
-    [SerializeField] private TMP_Text _numberOfPoints;
+    [SerializeField] private Text _scoreText;
+
+    private int _score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       UpdateScoreUI();
+    }
+
+    public void AddPoint()
+    {
+        _score++;
+        UpdateScoreUI();
     }
 
     // Update is called once per frame
-    void Update()
+    private void UpdateScoreUI()
     {
-        
+        if(_scoreText != null)
+        _scoreText.text = "Points: " + _score;
     }
 }

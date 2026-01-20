@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _moveSpeed = 7f;
 
     // Update is called once per frame
     private void Update()
     {
-        
+        transform.Translate(Vector3.left * _moveSpeed * Time.deltaTime);
     }
 }
